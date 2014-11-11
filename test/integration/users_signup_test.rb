@@ -9,6 +9,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                password:              "barbaz",
                                passwors_confirmation: "foobar" }
     assert_template 'users/new'
+    assert_select "div#error_explanation"
+    assert_select "div.alert-danger"
+    assert_not flash.nil?
     end
   end
   
