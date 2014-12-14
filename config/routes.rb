@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   root               'static_pages#home'
   get    'help'   => 'static_pages#help' #get  'static_pages/help'
   get    'about'  => 'static_pages#about'
@@ -14,6 +18,7 @@ Rails.application.routes.draw do
     end
   end
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
